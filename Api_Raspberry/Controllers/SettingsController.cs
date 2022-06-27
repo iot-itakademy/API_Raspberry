@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Api_Raspberry.DataAccess.DataObjects;
+using Swashbuckle.AspNetCore.Annotations;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -10,14 +11,12 @@ namespace Api_Raspberry.Controllers
     public class SettingsController : ControllerBase
     {
         iot_akademyContext db = new iot_akademyContext();
-        // GET: api/<SettingsController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
-        //GET api/<SettingsController>/camera/<id>
+        /// <summary>
+        /// Get camera params by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>JSON</returns>
         [HttpGet("{id}")]
         public Array GetCameraParamsById(int id)
         {
@@ -29,22 +28,15 @@ namespace Api_Raspberry.Controllers
             return result.ToArray();
         }
 
-        // POST api/<SettingsController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        /// <summary>
+        /// Get global settings for the project
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        [HttpGet]
+        public Array GetGlobalSettings()
         {
-        }
-
-        // PUT api/<SettingsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<SettingsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return db.GlobalSettings.Where(s => s.Id == 1).ToArray();
         }
     }
 }
