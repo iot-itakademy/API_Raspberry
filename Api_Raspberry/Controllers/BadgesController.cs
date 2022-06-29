@@ -19,7 +19,6 @@ namespace Api_Raspberry.Controllers
         [HttpGet("token")]
         public Boolean GetBadgeByRFID(int token)
         {
-            List<Badge> list = new List<Badge>();
             bool access = false;
             if (db.Badges.Where(b => b.Token == token).FirstOrDefault() != null)
             {

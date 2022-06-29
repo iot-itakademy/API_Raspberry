@@ -29,7 +29,7 @@ namespace Api_Raspberry.DataAccess.DataObjects
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=localhost;port=3306;user=root;password=root;database=iot_akademy", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.29-mysql"));
+                optionsBuilder.UseMySql("server=localhost;port=3306;user=service_iot;password=oM5fE5viesrZrS3fhak9o7Qpbd9Q;database=iot_akademy_dev", ServerVersion.Parse("8.0.29-mysql"));
             }
         }
 

@@ -17,13 +17,14 @@ namespace Api_Raspberry.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>JSON</returns>
-        [HttpGet("{id}")]
+        [HttpGet("camera/{id}")]
         public Array GetCameraParamsById(int id)
         {
             List<Sensor> result = new List<Sensor>();
-            foreach (var settings in db.Sensors.Where(s => s.Id == id))
+            result.Add(db.Sensors.Where(s => s.Id == id).FirstOrDefault());
+            foreach (var camera in result)
             {
-                result.Add(settings);
+                camera.Type = new SensorType() { Id = 1, Type = "Automatic" };
             }
             return result.ToArray();
         }
