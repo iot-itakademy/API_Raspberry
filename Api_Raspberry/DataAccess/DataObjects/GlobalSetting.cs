@@ -7,7 +7,8 @@ namespace Api_Raspberry.DataAccess.DataObjects
     {
         public int Id { get; set; }
         public int SurveyModeId { get; set; }
-        public string TimeZone { get; set; } = null!;
+        public int AmountCapture { get; set; }
         public int LastEditBy { get; set; }
+        public string TimeZone { get; set; } = null!;
     }
 }

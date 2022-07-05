@@ -26,6 +26,7 @@ namespace Api_Raspberry.Controllers
             {
                 camera.Type = new SensorType() { Id = 1, Type = "Automatic" };
             }
+
             return result.ToArray();
         }
 

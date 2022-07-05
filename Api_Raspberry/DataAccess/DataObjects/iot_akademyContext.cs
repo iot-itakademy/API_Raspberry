@@ -21,6 +21,7 @@ namespace Api_Raspberry.DataAccess.DataObjects
         public virtual DbSet<GlobalSetting> GlobalSettings { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
         public virtual DbSet<Sensor> Sensors { get; set; } = null!;
+        public virtual DbSet<Statistic> Statistics { get; set; } = null!;
         public virtual DbSet<SensorType> SensorTypes { get; set; } = null!;
         public virtual DbSet<SurveyMode> SurveyModes { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
@@ -29,7 +30,7 @@ namespace Api_Raspberry.DataAccess.DataObjects
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=localhost;port=3306;user=service_iot;password=oM5fE5viesrZrS3fhak9o7Qpbd9Q;database=iot_akademy_dev", ServerVersion.Parse("8.0.29-mysql"));
+                optionsBuilder.UseMySql("server=****;port=3306;user=****;password=****;database=iot_akademy_dev", ServerVersion.Parse("8.0.29-mysql"));
             }
         }
 
@@ -79,6 +80,8 @@ namespace Api_Raspberry.DataAccess.DataObjects
                 entity.HasIndex(e => e.LastEditBy, "global_settings_user_id_fk");
 
                 entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.AmountCapture).HasColumnName("amount_capture");
 
                 entity.Property(e => e.LastEditBy).HasColumnName("last_edit_by");
 
@@ -209,6 +212,27 @@ namespace Api_Raspberry.DataAccess.DataObjects
                 entity.Property(e => e.Zipcode)
                     .HasMaxLength(5)
                     .HasColumnName("zipcode");
+            });
+
+            modelBuilder.Entity<Statistic>(entity =>
+            {
+                entity.ToTable("statistics");
+
+                entity.HasIndex(e => e.Id, "statistics_id_uindex")
+                    .IsUnique();
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Amount).HasColumnName("amount");
+
+                entity.Property(e => e.Date)
+                    .HasColumnType("datetime")
+                    .HasColumnName("date")
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                entity.Property(e => e.Type)
+                    .HasMaxLength(50)
+                    .HasColumnName("type");
             });
 
             OnModelCreatingPartial(modelBuilder);
