@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ConfigurationManager = System.Configuration.ConfigurationManager;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -7,8 +8,11 @@ namespace Api_Raspberry.DataAccess.DataObjects
 {
     public partial class iot_akademyContext : DbContext
     {
+        protected readonly IConfiguration _configuration;
+
         public iot_akademyContext()
         {
+
         }
 
         public iot_akademyContext(DbContextOptions<iot_akademyContext> options)
