@@ -30,24 +30,6 @@ namespace Api_Raspberry.Controllers
             }
 
             return access;
-        }
-
-        // POST api/<BadgesController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<BadgesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<BadgesController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        }  
     }
 }

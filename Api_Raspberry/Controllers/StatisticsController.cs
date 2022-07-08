@@ -10,6 +10,10 @@ namespace Api_Raspberry.Controllers
     {
         iot_akademyContext db = new iot_akademyContext();
 
+        /// <summary>
+        /// Route used to send statistics from the raspberry when a detection is made
+        /// </summary>
+        /// <param name="stat"></param>
         [HttpPost]
         [Route("post")]
         public void AddStatistics(Statistic stat)
@@ -21,6 +25,10 @@ namespace Api_Raspberry.Controllers
             }
         }
 
+        /// <summary>
+        /// Return all the statistics from the database
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("get")]
         public Array GetStatistics()

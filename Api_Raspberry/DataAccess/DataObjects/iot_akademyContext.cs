@@ -34,7 +34,7 @@ namespace Api_Raspberry.DataAccess.DataObjects
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=****;port=3306;user=****;password=****;database=iot_akademy_dev", ServerVersion.Parse("8.0.29-mysql"));
+                optionsBuilder.UseMySql("server=82.65.209.20;port=3306;user=service_iot;password=oM5fE5viesrZrS3fhak9o7Qpbd9Q;database=iot_akademy_dev", ServerVersion.Parse("8.0.29-mysql"));
             }
         }
 
